@@ -2,7 +2,7 @@
 
 #### 使用方法:
 ```
-python main.py -m 29414460
+python NeteasyDownloader.py -m 29414460
 ```
 - 参数
 -m 音乐ID
