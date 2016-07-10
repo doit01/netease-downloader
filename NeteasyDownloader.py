@@ -65,7 +65,7 @@ class NeteasyDownloader():
             'songs': songs
         }
 
-def main():
+if __name__ == '__main__':
     nh = NeteasyDownloader()
     try:
         if sys.argv[1] == '-m':
