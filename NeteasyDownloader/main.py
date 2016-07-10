@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from ..NeteasyDownloader import Downloader
+from .NeteasyDownloader import Downloader
 import sys, urllib.request, os
 
 def main():
@@ -17,7 +17,7 @@ def main():
 
             # 专辑
             result = nh.get_album(sys.argv[2])
-            os.mkdir(result['name'])
+            os.mkdir( result['name'])
             for item in result['songs']:
                 try:
                     print('正在下载: %s' % item['song'])
