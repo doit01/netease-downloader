@@ -2,7 +2,7 @@
 
 import requests, json, sys, urllib.request, os
 
-class NeteasyHelper():
+class NeteasyDownloader():
     def __init__(self):
         self.header = {
             'Cookie': 'appver=1.5.0.75771;',
@@ -66,7 +66,7 @@ class NeteasyHelper():
         }
 
 def main():
-    nh = NeteasyHelper()
+    nh = NeteasyDownloader()
     try:
         if sys.argv[1] == '-m':
 
