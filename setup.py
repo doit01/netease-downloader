@@ -1,4 +1,5 @@
 from distutils.core import setup
+from setuptools import find_packages
 
 setup(
     name = 'NeteasyDownloader',
@@ -10,6 +11,7 @@ setup(
     author_email = 'faith0725@outlook.com',
     url = 'https://github.com/MyFaith/neteasy-downloader',
     license = 'MIT',
+    packages = find_packages(),
     entry_points = {
         'console_scripts': [
             'neteasy = Neteasy_Downloader:main'
