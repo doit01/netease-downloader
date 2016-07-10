@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from .NeteasyDownloader import Downloader
+from ..NeteasyDownloader import Downloader
 import sys, urllib.request, os
 
 def main():
