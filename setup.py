@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='NeteasyDownloader',
-    version='0.6',
+    version='0.7',
     keywords=('neteasy', 'music', 'downloader', 'download'),
     description='Neteasy Music/Ablum/Playlist downloader.',
     long_description='neteasy -m 29414460 [-m music, -a ablum, -p playlist]',
