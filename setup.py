@@ -11,6 +11,7 @@ setup(
     url='https://github.com/MyFaith/neteasy-downloader',
     license='MIT',
     packages = find_packages(),
+    install_requires = ['requests', 'gevent'],
     entry_points={
         'console_scripts': [
             'neteasy = neteasy.cmdline:execute'
