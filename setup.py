@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='NeteasyDownloader',
-    version='0.7',
-    keywords=('neteasy', 'music', 'downloader', 'download'),
+    name='NeteaseDownloader',
+    version='0.8',
+    keywords=('netease', 'music', 'downloader', 'download'),
     description='Neteasy Music/Ablum/Playlist downloader.',
-    long_description='neteasy -m 29414460 [-m music, -a ablum, -p playlist]',
+    long_description='netease -music 29414460[-music, -ablum, -playlist] -thread 4',
     author='MyFaith',
     author_email='faith0725@outlook.com',
     url='https://github.com/MyFaith/neteasy-downloader',
@@ -14,7 +14,7 @@ setup(
     install_requires = ['requests', 'gevent'],
     entry_points={
         'console_scripts': [
-            'neteasy = neteasy.cmdline:execute'
+            'netease = netease.cmdline:execute'
         ]
     }
 )

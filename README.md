@@ -2,11 +2,11 @@
 
 #### 使用方法:
 ```
-pip install NeteasyDownloader
-neteasy -m {ID} -t 4
+pip install NeteaseDownloader
+netease -music {ID} -thread 4
 ```
 - 参数
--m 音乐ID
--a 专辑ID 
--p 歌单ID
--t 协程数
+-music 音乐ID
+-album 专辑ID
+-playlist 歌单ID
+-thread 协程数
