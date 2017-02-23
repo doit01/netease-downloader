@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from . import NeteaseDownloader
+from .NeteaseDownloader import Downloader
 import sys, os, requests, argparse
 from gevent import monkey; monkey.patch_all()
 import gevent
@@ -22,7 +22,7 @@ def execute():
     parser.add_argument('-thread', type=int, default=4, dest='thread', help='线程')
     args = parser.parse_args()
 
-    downloader = NeteaseDownloader.Downloader()
+    downloader = Downloader()
     thread_on = args.thread
 
     if args.music:
