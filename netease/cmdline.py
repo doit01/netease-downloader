@@ -1,16 +1,16 @@
 # coding: utf-8
 
-from NeteaseDownloader import Downloader
+from netease import NeteaseDownloader
 import sys, os, requests, argparse
 from gevent import monkey; monkey.patch_all()
 import gevent
 from gevent.queue import Queue
 
-def download_music(queue, floder, name):
+def download_music(queue, folder, name):
     while not queue.empty():
         item = queue.get_nowait()
         content = requests.get(item['url']).content
-        with open('%s/%s - %s.mp3' %(floder, item['artist'], item['song']), 'wb') as f:
+        with open('%s/%s - %s.mp3' %(folder, item['artist'], item['song']), 'wb') as f:
             f.write(content)
             print('[协程%s]下载完成: %s - %s' %(name, item['artist'], item['song']))
 
@@ -22,7 +22,7 @@ def execute():
     parser.add_argument('-thread', type=int, default=4, dest='thread', help='线程')
     args = parser.parse_args()
 
-    downloader = Downloader()
+    downloader = NeteaseDownloader.Downloader()
     thread_on = args.thread
 
     if args.music:
