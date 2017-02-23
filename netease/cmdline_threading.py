@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from NeteaseDownloader import Downloader
+from .NeteaseDownloader import Downloader
 import sys, os, requests, argparse
 import threading
 import queue
