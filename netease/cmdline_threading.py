@@ -2,9 +2,8 @@
 
 from NeteaseDownloader import Downloader
 import sys, os, requests, argparse
-from gevent import monkey; monkey.patch_all()
-import gevent
-from gevent.queue import Queue
+import threading
+import queue
 
 def download_music(queue, folder, name):
     while not queue.empty():
@@ -12,7 +11,7 @@ def download_music(queue, folder, name):
         content = requests.get(item['url']).content
         with open('%s/%s - %s.mp3' %(folder, item['artist'], item['song']), 'wb') as f:
             f.write(content)
-            print('[协程%s]下载完成: %s - %s' %(name, item['artist'], item['song']))
+            print('[线程%s]下载完成: %s - %s' %(name, item['artist'], item['song']))
 
 def execute():
     parser = argparse.ArgumentParser('netease')
@@ -34,7 +33,7 @@ def execute():
             print('下载完成: %s - %s' % (result['artist'], result['song']))
     elif args.album:
         # 专辑
-        songs_queue = Queue()
+        songs_queue = queue.Queue()
         result = downloader.get_album(sys.argv[2])
         # 替换windows非法字符
         result['name'] = str(result['name'])\
@@ -55,12 +54,16 @@ def execute():
             })
         gevent_list = []
         for i in range(int(thread_on)):
-            gevent_list.append(gevent.spawn(download_music, songs_queue, result['name'], str(i + 1)))
-        gevent.joinall(gevent_list)
+            gevent_list.append(
+                threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i + 1)), name='1')
+            )
+        #gevent.joinall(gevent_list)
+        for i in gevent_list:
+            i.start()
     elif args.playlist:
         # 歌单
         result = downloader.get_playlist(sys.argv[2])
-        songs_queue = Queue()
+        songs_queue = queue.Queue()
         # 替换windows非法字符
         result['name'] = str(result['name']) \
             .replace('/', ',') \
@@ -80,8 +83,11 @@ def execute():
             })
         gevent_list = []
         for i in range(int(thread_on)):
-            gevent_list.append(gevent.spawn(download_music, songs_queue, result['name'], str(i + 1)))
-        gevent.joinall(gevent_list)
+            gevent_list.append(
+                threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i +1)))
+            )
+        for i in gevent_list:
+            i.start()
 
 if __name__ == '__main__':
     execute()
