@@ -36,6 +36,16 @@ def execute():
         # 专辑
         songs_queue = Queue()
         result = downloader.get_album(sys.argv[2])
+        # 替换windows非法字符
+        result['name'] = str(result['name'])\
+            .replace('/', ',')\
+            .replace('\\', ',')\
+            .replace(':', ',')\
+            .replace('*', ',')\
+            .replace('?', ',')\
+            .replace('"', ',')\
+            .replace('|', ',')
+
         os.mkdir(result['name'])
         for item in result['songs']:
             songs_queue.put_nowait({
@@ -51,6 +61,16 @@ def execute():
         # 歌单
         result = downloader.get_playlist(sys.argv[2])
         songs_queue = Queue()
+        # 替换windows非法字符
+        result['name'] = str(result['name']) \
+            .replace('/', ',') \
+            .replace('\\', ',') \
+            .replace(':', ',') \
+            .replace('*', ',') \
+            .replace('?', ',') \
+            .replace('"', ',') \
+            .replace('|', ',')
+
         os.mkdir(result['name'])
         for item in result['songs']:
             songs_queue.put_nowait({
