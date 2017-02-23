@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from netease import NeteaseDownloader
+from . import NeteaseDownloader
 import sys, os, requests, argparse
 from gevent import monkey; monkey.patch_all()
 import gevent
