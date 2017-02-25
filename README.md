@@ -1,8 +1,8 @@
 ## 网易云音乐下载器
-[![PyPI](https://img.shields.io/pypi/v/NeteaseDownloader.svg)]()
-[![PyPI](https://img.shields.io/pypi/dm/NeteaseDownloader.svg)]()
-[![PyPI](https://img.shields.io/pypi/l/NeteaseDownloader.svg)]()
-[![PyPI](https://img.shields.io/pypi/pyversions/NeteaseDownloader.svg)]()
+[![PyPI](https://img.shields.io/pypi/v/NeteaseDownloader.svg)](https://pypi.python.org/pypi/NeteaseDownloader/1.7)
+[![PyPI](https://img.shields.io/pypi/dm/NeteaseDownloader.svg)](https://pypi.python.org/pypi/NeteaseDownloader/1.7)
+[![PyPI](https://img.shields.io/pypi/l/NeteaseDownloader.svg)](https://pypi.python.org/pypi/NeteaseDownloader/1.7)
+[![PyPI](https://img.shields.io/pypi/pyversions/NeteaseDownloader.svg)](https://pypi.python.org/pypi/NeteaseDownloader/1.7)
 #### 使用方法:
 ```
 pip install NeteaseDownloader
