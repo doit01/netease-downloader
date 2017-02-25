@@ -53,13 +53,12 @@ def execute():
                 'artist': item['artist']
             })
         thread_list = []
+        t = threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i + 1)), name='1')
         for i in range(int(thread_on)):
-            thread_list.append(
-                threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i + 1)), name='1')
-            )
-        #gevent.joinall(gevent_list)
+            t.start()
+            thread_list.append(t)
         for i in thread_list:
-            i.start()
+            i.join()
     elif args.playlist:
         # 歌单
         result = downloader.get_playlist(sys.argv[2])
@@ -83,11 +82,11 @@ def execute():
             })
         thread_list = []
         for i in range(int(thread_on)):
-            thread_list.append(
-                threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i +1)))
-            )
+            t = threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i + 1)))
+            t.start()
+            thread_list.append(t)
         for i in thread_list:
-            i.start()
+            i.join()
 
 if __name__ == '__main__':
     execute()
