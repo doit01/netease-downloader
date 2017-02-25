@@ -52,13 +52,13 @@ def execute():
                 'song': item['song'],
                 'artist': item['artist']
             })
-        gevent_list = []
+        thread_list = []
         for i in range(int(thread_on)):
-            gevent_list.append(
+            thread_list.append(
                 threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i + 1)), name='1')
             )
         #gevent.joinall(gevent_list)
-        for i in gevent_list:
+        for i in thread_list:
             i.start()
     elif args.playlist:
         # 歌单
@@ -81,12 +81,12 @@ def execute():
                 'song': item['song'],
                 'artist': item['artist']
             })
-        gevent_list = []
+        thread_list = []
         for i in range(int(thread_on)):
-            gevent_list.append(
+            thread_list.append(
                 threading.Thread(target=download_music, args=(songs_queue, result['name'], str(i +1)))
             )
-        for i in gevent_list:
+        for i in thread_list:
             i.start()
 
 if __name__ == '__main__':
